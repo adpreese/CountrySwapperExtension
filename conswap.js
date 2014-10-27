@@ -339,7 +339,7 @@ function initializeGuesserFormSettings() {
 }
 
 var guessFormHTML =
-  '<div class="container" style="position:fixed; height:50px; bottom:0px;">' +
+  '<div class="container" style="position:fixed; height:100px; bottom:0px;">' +
   '<form class="navbar-form navbar-left" role="search" >' +
   '<div class="form-group">' +
   '<input id="conswap_guess" type="text" class="form-control" placeholder="Which country is it?">' +
