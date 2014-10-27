@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+
+  "name": "Country Swap",
+  "description": "Stuff",
+  "version": "1.0",
+   "permissions": [
+    	"storage"
+   ],
+  "content_scripts": [{
+    "matches": ["http://adpreese.github.io/*", "http://www.nytimes.com/*", "http://www.vox.com/*"],
+    "js": ["underscore.js", "jquery.js", "conswap.js", "bootbox.js", "bootstrap.js", "jquery.scoped.js"]
+  }]
+}
