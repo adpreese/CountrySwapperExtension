@@ -8,7 +8,7 @@
     	"storage"
    ],
   "content_scripts": [{
-    "matches": ["http://adpreese.github.io/*", "http://www.nytimes.com/*", "http://www.vox.com/*"],
+    "matches": ["http://adpreese.github.io/*", "http://www.nytimes.com/*", "http://www.vox.com/*", "http://www.washingtonpost.com/*", "http://www.economist.com/*"],
     "js": ["underscore.js", "jquery.js", "conswap.js", "jquery.scoped.js"]
   }]
 }

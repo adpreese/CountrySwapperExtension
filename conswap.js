@@ -246,6 +246,9 @@ $(document).ready(function() {
 
 function getCurrentScore() {
   chrome.storage.sync.get(["conswap_correctly_guessed_count"], function(storedValue) {
+    if (typeof storedValue["conswap_correctly_guessed_count"] === "undefined" || isNaN(storedValue["conswap_correctly_guessed_count"])) {
+      storedValue["conswap_correctly_guessed_count"] = 0;
+    }
     currentScore = +storedValue["conswap_correctly_guessed_count"];
   });
 }
@@ -288,7 +291,7 @@ function evaluateGuess() {
       } 
       +storedValue["conswap_correctly_guessed_count"]++;
       currentScore = +storedValue["conswap_correctly_guessed_count"];
-      if (typeof storedValue["conswap_correct_urls"] === "Array") {
+      if (typeof storedValue["conswap_correct_urls"] !== "Array") {
         storedValue["conswap_correct_urls"] = [];
       }
       storedValue["conswap_correct_urls"].push(document.URL);
@@ -314,7 +317,7 @@ function evaluateGuess() {
 function initializeGuesser() {
   //bootbox.prompt("Which country is missing?", evaluateGuess);
   bootstrapped = document.createElement("div");
-  bootstrapped.className= "conswap";
+  bootstrapped.className = "conswap";
   //bootstrapped.innerHTML = "<style scoped>@import url('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css');</style>";
   document.body.appendChild(bootstrapped);
   bottomBar = document.createElement("nav");
@@ -360,7 +363,6 @@ var warnStateHTML = '<div class="container" style="position:fixed; height:100px;
 
 var currentScoreHTML = '<p class="navbar-text" style="color: #0181eb">Current Score: CONSWAP_SCORE</p>';
 
-var successStateHTML = '<div class="container" style="position:fixed; height:100px; bottom:0px;"><p class="navbar-text" style="color: #3c763d;background-color: #dff0d8;border-color: #d6e9c6;">You guessed right!</p>' + currentScoreHTML+ '</div>';
+var successStateHTML = '<div class="container" style="position:fixed; height:100px; bottom:0px;"><p class="navbar-text" style="color: #3c763d;background-color: #dff0d8;border-color: #d6e9c6;">You guessed right!</p>' + currentScoreHTML + '</div>';
 
-var failureStateHTML = '<div class="container" style="position:fixed; height:100px; bottom:0px;"><p class="navbar-text" style="color: #a94442;background-color: #f2dede;border-color: #ebccd1;">Better luck next time!</p>' + currentScoreHTML +'</div>';
-
+var failureStateHTML = '<div class="container" style="position:fixed; height:100px; bottom:0px;"><p class="navbar-text" style="color: #a94442;background-color: #f2dede;border-color: #ebccd1;">Better luck next time!</p>' + currentScoreHTML + '</div>';
